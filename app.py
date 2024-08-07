@@ -1,6 +1,5 @@
 from flask import Flask, render_template, request, redirect, url_for
 from flask_wtf import FlaskForm
-from flask_bootstrap import Bootstrap
 from wtforms import FileField, SubmitField
 from wtforms.validators import DataRequired
 from werkzeug.utils import secure_filename
@@ -8,9 +7,7 @@ import os
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'your_secret_key'
-app.config['UPLOAD_FOLDER'] = 'uploads/'
-
-Bootstrap(app)
+app.config['UPLOAD_FOLDER'] = 'static/uploads/'
 
 class UploadForm(FlaskForm):
     file = FileField('Upload Image', validators=[DataRequired()])
@@ -28,8 +25,6 @@ def index():
 
 @app.route('/result/<filename>')
 def result(filename):
-    # Add AI model analysis here
-    # For now, just display the uploaded image
     return render_template('result.html', filename=filename)
 
 if __name__ == '__main__':
