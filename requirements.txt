@@ -1,0 +1,7 @@
+pylint==3.2.6
+Flask==2.2.2
+flask-wtf
+flask-bootstrap
+pillow
+numpy
+tensorflow
