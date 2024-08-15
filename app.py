@@ -18,7 +18,7 @@ def index():
 
 @app.route('/generate', methods=['GET'])
 def generate():
-    response = model.generate_content("Describe how this product might be manufactured.")
+    response = model.generate_content("Describe how athis product might be manufactured.")
     print(response.text)
 
 

@@ -56,7 +56,7 @@ def update_contact(user_id):
     contact.email = data.get("email", contat.email)
 
     try:
-        db.session.commit
+        db.session.commit()
     except Exception as e:
         return jsonify({"message": str(e)})
     

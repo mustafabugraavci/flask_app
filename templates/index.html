@@ -1,24 +1,14 @@
-<!-- templates/index.html -->
-
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>AI Art Generator</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <meta charset="utf-8">
+    <title>Upload an Image</title>
 </head>
 <body>
-    <div class="container">
-        <h1>AI Art Generator</h1>
-        <form action="/generate" method="post">
-            <button type="submit">Generate Art</button>
-        </form>
-        {% if image_url %}
-            <div class="art">
-                <h2>Generated Art:</h2>
-                <img src="{{ image_url }}" alt="Generated Art">
-            </div>
-        {% endif %}
-    </div>
+    <h1>Upload an Image to Categorize Art Style</h1>
+    <form method="post" enctype="multipart/form-data">
+        <input type="file" name="file">
+        <input type="submit" value="Upload">
+    </form>
 </body>
 </html>

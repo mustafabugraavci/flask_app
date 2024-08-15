@@ -1,21 +1,14 @@
 <!doctype html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>AI Analysis Result</title>
-    <!-- Load Bootstrap CSS from CDN -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-  </head>
-  <body>
-    <div class="container">
-      <h1 class="mt-5">Analysis Result</h1>
-      <img src="{{ url_for('static', filename='uploads/' + filename) }}" class="img-fluid" alt="Uploaded Image">
-      <p>AI analysis result goes here...</p>
-    </div>
-    <!-- Load Bootstrap JS from CDN -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-  </body>
+    <title>Result</title>
+</head>
+<body>
+    <h1>Art Style Categorized</h1>
+    <p>Art Style: {{ art_style }}</p>
+    <img src="{{ url_for('uploaded_file', filename=filename) }}" alt="Uploaded Image">
+    <br><br>
+    <a href="/">Upload Another Image</a>
+</body>
 </html>
