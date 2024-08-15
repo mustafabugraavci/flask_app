@@ -1,37 +1,25 @@
-from flask import Flask, render_template, redirect, url_for
-from flask_wtf import FlaskForm
-from wtforms import FileField, SubmitField
-from wtforms.validators import DataRequired
-from werkzeug.utils import secure_filename
-import os
+# app.py
 
+from flask import Flask, render_template, request
+import json
+import requests
+import google.generativeai as genai
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = 'your_secret_key'
-app.config['UPLOAD_FOLDER'] = 'static/uploads/'
 
+# Replace with your actual Gemini API details
+GEMINI_API_KEY = 'AIzaSyCtbYipWNUH5tqwFs67cmdprDggOMme9sk'
+model = genai.GenerativeModel(model_name="gemini-1.5-flash")
+genai.configure(api_key=GEMINI_API_KEY)
 
-class UploadForm(FlaskForm):
-    file = FileField('Upload Image', validators=[DataRequired()])
-    submit = SubmitField('Analyze')
-
-
-@app.route('/', methods=['GET', 'POST'])
+@app.route('/')
 def index():
-    '''Index page fun'''
-    form = UploadForm()
-    if form.validate_on_submit():
-        file = form.file.data
-        filename = secure_filename(file.filename)
-        file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-        return redirect(url_for('result', filename=filename))
-    return render_template('index.html', form=form)
+    return render_template('index.html')
 
-
-@app.route('/result/<filename>')
-def result(filename):
-    '''Result page fun'''
-    return render_template('result.html', filename=filename)
+@app.route('/generate', methods=['GET'])
+def generate():
+    response = model.generate_content("Describe how this product might be manufactured.")
+    print(response.text)
 
 
 if __name__ == '__main__':

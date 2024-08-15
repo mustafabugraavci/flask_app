@@ -1,29 +1,24 @@
-<!doctype html>
+<!-- templates/index.html -->
+
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>AI-Powered Design Assistant</title>
-    <!-- Load Bootstrap CSS from CDN -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-  </head>
-  <body>
+<head>
+    <meta charset="UTF-8">
+    <title>AI Art Generator</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
     <div class="container">
-      <h1 class="mt-5">AI-Powered Design Assistant</h1>
-      <form method="POST" enctype="multipart/form-data">
-        {{ form.hidden_tag() }}
-        <div class="form-group">
-          {{ form.file.label(class="form-control-label") }}
-          {{ form.file(class="form-control-file") }}
-        </div>
-        <div class="form-group">
-          {{ form.submit(class="btn btn-primary") }}
-        </div>
-      </form>
+        <h1>AI Art Generator</h1>
+        <form action="/generate" method="post">
+            <button type="submit">Generate Art</button>
+        </form>
+        {% if image_url %}
+            <div class="art">
+                <h2>Generated Art:</h2>
+                <img src="{{ image_url }}" alt="Generated Art">
+            </div>
+        {% endif %}
     </div>
-    <!-- Load Bootstrap JS from CDN -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-  </body>
+</body>
 </html>
