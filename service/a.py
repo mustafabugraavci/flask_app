@@ -5,7 +5,17 @@ from models import Contact
 
 @app.route('/')
 def index():
-    return render_template('/templates/index.html')
+    """
+    This function is a route handler for the root URL of the application.
+    It renders the index.html template.
+
+    Parameters:
+    None
+
+    Returns:
+    A rendered HTML template for the index page.
+    """
+    return render_template('templates/index.html')
 
 
 @app.route("/read", methods=["GET"])
