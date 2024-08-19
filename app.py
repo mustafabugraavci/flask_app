@@ -9,7 +9,7 @@ CORS(app)
 
 
 # Replace with your actual Gemini API details
-GEMINI_API_KEY = 'AIzaSyCtbYipWNUH5tqwFs67cmdprDggOMme9sk'
+
 model = genai.GenerativeModel(model_name="gemini-1.5-flash")
 genai.configure(api_key=GEMINI_API_KEY)
 
